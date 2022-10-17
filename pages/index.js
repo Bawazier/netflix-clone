@@ -1,4 +1,5 @@
 import React from "react";
+import Head from "next/head";
 import { Box, Container, VStack } from "@chakra-ui/react";
 import Navigation from "/components/Navigation";
 import Banner from "/components/Banner";
@@ -24,6 +25,10 @@ const Home = () => {
       justifyContent="center"
       bgColor="blackAlpha.700"
     >
+      <Head>
+        <title>Netlix Clone</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Box sx={basicBoxStyles} w="full" h="80vh" zIndex="-999"></Box>
       <Container maxW={["container.xl"]}>
         <VStack spacing="32" w="full" h="80vh" alignItems="start">
