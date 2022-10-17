@@ -10,10 +10,21 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  Center,
 } from "@chakra-ui/react";
+import { useBreakpointValue } from "@chakra-ui/react";
 import { FaChevronDown } from "@react-icons/all-files/fa/FaChevronDown";
+import { FaAlignJustify } from "@react-icons/all-files/fa/FaAlignJustify";
 
 const Navigation = () => {
+  const buttonIcon = useBreakpointValue({
+    base: <FaAlignJustify size={24} />,
+    md: <FaChevronDown />,
+  });
+  const navBreakpoint = useBreakpointValue({
+    base: false,
+    md: true,
+  });
   return (
     <Flex
       w="full"
@@ -24,20 +35,28 @@ const Navigation = () => {
       fontSize="md"
       fontWeight="semibold"
       lineHeight="6"
-      pt="4"
+      mt="4"
     >
       <HStack alignItems="center" gap="16">
-        <Heading as="h2" size="xl" color="red.600" textShadow="md">
+        <Heading
+          as="h2"
+          size="xl"
+          color="red.600"
+          textShadow="md"
+          lineHeight="none"
+        >
           NETFLIX
         </Heading>
-        <ButtonGroup variant="link" spacing="2">
-          <Button mx="4" my="2" colorScheme="white">
-            Home
-          </Button>
-          <Button mx="4" my="2" colorScheme="white">
-            My List
-          </Button>
-        </ButtonGroup>
+        {navBreakpoint && (
+          <ButtonGroup variant="link" spacing="2">
+            <Button mx="4" my="2" colorScheme="white">
+              Home
+            </Button>
+            <Button mx="4" my="2" colorScheme="white">
+              My List
+            </Button>
+          </ButtonGroup>
+        )}
       </HStack>
       <Spacer />
       <Menu>
@@ -46,11 +65,17 @@ const Navigation = () => {
           colorScheme="white"
           variant="link"
           size="md"
-          rightIcon={<FaChevronDown />}
+          rightIcon={buttonIcon}
         >
-          Email Address
+          {navBreakpoint ? "Email Address" : ""}
         </MenuButton>
         <MenuList bgColor="gray.500">
+          {!navBreakpoint && (
+            <>
+              <MenuItem>Home</MenuItem>
+              <MenuItem>My List</MenuItem>
+            </>
+          )}
           <MenuItem>Sign out</MenuItem>
         </MenuList>
       </Menu>
