@@ -11,13 +11,15 @@ const ListCard = (props) => {
       </Heading>
       <HStack
         w="full"
+        display={props.wrap ? "inline-block" : "flex"}
         align="start"
         spacing="1"
         py="6"
         overflowY="hidden"
         overflowX="auto"
+        shouldWrapChildren={props.wrap}
       >
-        {[...Array(10)].map((item, index) => (
+        {[...Array(props.data)].map((item, index) => (
           <Card
             key={index}
             id={index + 1}

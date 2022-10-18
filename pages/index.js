@@ -36,9 +36,27 @@ const Home = () => {
           <Banner />
         </VStack>
         <VStack alignItems="start">
-          <Card title="Disney" size="large" />
-          <Card title="Travel" size="small" />
-          <Card title="Productivity" size="medium" />
+          <Card
+            title="Disney"
+            size="large"
+            wrap={false}
+            data={10}
+            animation={true}
+          />
+          <Card
+            title="Travel"
+            size="small"
+            wrap={false}
+            data={15}
+            animation={true}
+          />
+          <Card
+            title="Productivity"
+            size="medium"
+            wrap={false}
+            data={25}
+            animation={true}
+          />
         </VStack>
       </Container>
     </Box>

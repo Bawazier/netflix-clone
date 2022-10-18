@@ -17,7 +17,7 @@ const Card = (props) => {
     <Box cursor={"pointer"}>
       <Box
         as={motion.div}
-        whileHover={scale}
+        whileHover={props.animation ? scale : null}
         whileTap={{ scale: 0.9 }}
         _hover={{ zIndex: "99" }}
         position="relative"
