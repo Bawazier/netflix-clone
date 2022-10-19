@@ -8,9 +8,12 @@ import {
   AspectRatio,
   HStack,
   Text,
+  Circle,
 } from "@chakra-ui/react";
 import Navigation from "/components/Navigation";
 import { faker } from "@faker-js/faker";
+import { BiLike } from "@react-icons/all-files/bi/BiLike";
+import { BiDislike } from "@react-icons/all-files/bi/BiDislike";
 
 const Video = () => {
   const [dateVideo, setDateVideo] = useState(faker.date.between());
@@ -35,17 +38,33 @@ const Video = () => {
         <VStack spacing="10" w="full" alignItems="start">
           <Navigation />
           <VStack w="full" alignItems="center" color="white" overflow="hidden">
-            <AspectRatio w="4xl" h="sm" ratio={1}>
-              <iframe
-                title="naruto"
-                src="https://www.youtube.com/embed/QhBnZ6NPOY0"
-                allowFullScreen
-              />
-            </AspectRatio>
+            <Box position="relative">
+              <AspectRatio w={{ base: "xl", md: "4xl" }} h="sm" ratio={1}>
+                <iframe
+                  title="naruto"
+                  src={`https://www.youtube.com/embed/${"QhBnZ6NPOY0"}?autoplay=0&origin=http://example.com&controls=0&rel=1`}
+                  allowFullScreen
+                  frameBorder="0"
+                  style={{
+                    borderRadius: "10px 10px 0px 0px",
+                    composes: "borderBoxShadow",
+                  }}
+                />
+              </AspectRatio>
+              <HStack position={"absolute"} top={"72"} left={"8"} spacing={"4"}>
+                <Circle size="14" bg="transparent" border={"2px"} color="white">
+                  <BiLike size={"40px"} />
+                </Circle>
+                <Circle size="14" bg="transparent" border={"2px"} color="white">
+                  <BiDislike size={"40px"} />
+                </Circle>
+              </HStack>
+            </Box>
+
             <Stack
               direction={{ base: "column", md: "row" }}
               spacing={8}
-              maxW="4xl"
+              maxW={{ base: "xl", md: "4xl" }}
               justify={"flex-start"}
               align={"flex-start"}
               overflowY="hidden"
